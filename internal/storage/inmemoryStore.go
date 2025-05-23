@@ -20,6 +20,10 @@ func (s *InMemoryStore) Get(key string) (string, bool) {
 	return val, ok
 }
 
+func (s *InMemoryStore) GetAll() map[string]string {
+	return s.data
+}
+
 func (s *InMemoryStore) Set(key, value string) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
