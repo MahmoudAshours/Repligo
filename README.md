@@ -37,7 +37,7 @@ This project implements a distributed caching system with write-through semantic
 - Propagates updates to all slave nodes
 - Provides consistency guarantees
 
-### Fault Detection and Recovery
+### Fault Detection and Recovery (Later)
 - Health checking between nodes
 - Leader election protocol for master failover
 - Recovery mechanisms for failed nodes
@@ -117,6 +117,16 @@ The implementation leverages Go's strengths for distributed systems:
 - Go modules for dependency management
 - Idiomatic Go error handling
 
+| Feature                                | Status |
+| -------------------------------------- | ------ |
+| Basic key-value in-memory store        | ✅ Done |
+| CLI configuration (role + port)        | ✅ Done |
+| HTTP handlers for write & replicate    | ✅ Done |
+| Master-slave data propagation          | ✅ Done |
+| Node metadata structure                | ✅ Done |
+| Replication to multiple slaves         | ✅ Done |
+| Node struct passed to handlers         | ✅ Done |
+
 ## Testing Strategy
 
 The project includes comprehensive testing:
@@ -127,9 +137,20 @@ The project includes comprehensive testing:
 - Performance benchmarks for throughput and latency
 - Race condition detection using Go's built-in race detector
 
-## Getting Started
+### 🚀 Getting Started
+To run a master node:
+```bash
+go run main.go -role=master -port=8080
+```
 
-(Coming soon)
+To run a slave node:
+```bash
+go run main.go -role=slave -port=8081
+go run main.go -role=slave -port=8082
+```
+```bash
+curl "localhost:8080/write?key=hello&value=world"
+```
 
 ## Contributing
 
