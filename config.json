@@ -1,0 +1,19 @@
+{
+  "cluster": {
+    "master": {
+      "ip": "localhost",
+      "port": 8080
+    },
+    "slaves": [
+      {
+        "ip": "localhost",
+        "port": 8081
+      },
+      {
+        "ip": "localhost",
+        "port": 8082
+      }
+    ]
+  }
+}
+
